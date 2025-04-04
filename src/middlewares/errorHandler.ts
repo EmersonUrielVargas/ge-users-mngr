@@ -4,9 +4,7 @@ import { constants } from "http2";
 export const errorHandler = (err: any, _req:Request, response: Response, _next: NextFunction)=>{
     let customErr = err;
     try {
-        if (typeof customErr === "string") {
-            customErr =  JSON.parse(customErr);
-        }
+        customErr = JSON.parse(customErr.message);
     } catch{}
     if (customErr?.description) {
         response.status(customErr.statusCode).send(customErr);
