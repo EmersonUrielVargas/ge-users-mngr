@@ -60,7 +60,9 @@ export class UserService {
                 throw new Error(JSON.stringify(errorRs));
             }
             const payload = {
-                username: currentUser.email
+                username: currentUser.name,
+                email: currentUser.email,
+                id: currentUser.id
             }
             const token = jwt.sign(payload, SECRET_KEY,{ expiresIn:'1h'});
             response
