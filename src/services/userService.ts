@@ -60,7 +60,7 @@ export class UserService {
                 throw new Error(JSON.stringify(errorRs));
             }
             const payload = {
-                username: currentUser.name,
+                name: currentUser.name,
                 email: currentUser.email,
                 id: currentUser.id
             }
