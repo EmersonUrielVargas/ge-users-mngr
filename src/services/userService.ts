@@ -22,7 +22,7 @@ export class UserService {
                 email: userData.email
             });
             if (!currentUser) {
-                userData.password = await bcrypt.hash(userData.password, SALT_ROUNDS);
+                userData.password = await bcrypt.hash(userData.password, Number(SALT_ROUNDS));
                 await this.userRepository.save(userData);
                 response.status(constants.HTTP_STATUS_CREATED).send();
             }else{
